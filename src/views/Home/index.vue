@@ -1,10 +1,8 @@
 <template>
-  <div class="Home"></div>
+  <div class="Home">home</div>
 </template>
 
-<style lang="sass" scoped>
-@import './index.scss';
-</style>
+<style></style>
 
 <script>
 export default {

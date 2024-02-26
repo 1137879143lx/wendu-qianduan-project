@@ -4,7 +4,7 @@
       <el-aside width="200px">
         <div
           style="
-            width: 199px;
+            max-width: 199px;
             height: 60px;
             background-color: #2b2f3a;
             align-items: center;
@@ -12,7 +12,10 @@
             display: flex;
           "
         >
-          <h1 style="color: rgb(250, 245, 245)">温湿度检测云平台</h1>
+          <el-avatar> user </el-avatar>
+          <h1 style="color: rgb(250, 245, 245); margin-left: 10px">
+            温湿度云平台
+          </h1>
         </div>
         <!--  菜单 -->
         <el-menu
@@ -23,7 +26,7 @@
           style="background-color: #0c2135"
           active-text-color="#ffd04b"
         >
-          <el-menu-item index="1">
+          <el-menu-item index="1" route="/">
             <el-icon><House /></el-icon>
             首页
           </el-menu-item>
@@ -50,7 +53,9 @@
             </template>
           </el-page-header>
         </el-header>
-        <el-main> <router-view></router-view> </el-main>
+        <el-main>
+          <router-view></router-view>
+        </el-main>
       </el-container>
     </el-container>
   </div>
