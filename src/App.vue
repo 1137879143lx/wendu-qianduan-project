@@ -12,7 +12,7 @@
             display: flex;
           "
         >
-          <h1 style="color: white">温湿度检测云平台</h1>
+          <h1 style="color: white">温湿度检测云平台1</h1>
         </div>
         <el-menu
           :default-active="activeIndex"
