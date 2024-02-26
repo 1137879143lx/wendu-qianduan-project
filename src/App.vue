@@ -12,13 +12,16 @@
             display: flex;
           "
         >
-          <h1 style="color: white">温湿度检测云平台1</h1>
+          <h1 style="color: rgb(250, 245, 245)">温湿度检测云平台</h1>
         </div>
+        <!--  菜单 -->
         <el-menu
+          :collapse="isCollapse"
           :default-active="activeIndex"
           @select="handleSelect"
           class="el-menu-vertical-demo"
           style="background-color: #0c2135"
+          active-text-color="#ffd04b"
         >
           <el-menu-item index="1">
             <el-icon><House /></el-icon>
@@ -37,9 +40,17 @@
 
       <el-container>
         <el-header>
-          <!-- <h1>温湿度检测云平台</h1> -->
+          <!-- <el-button type="text" @click="handleCollapse" style="color: #ffffff"
+            ><el-icon
+              :class="isCollapse ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+          /></el-button> -->
+          <el-page-header :icon="ArrowLeft">
+            <template #content>
+              <span class="text-large font-600 mr-3"> 首页 </span>
+            </template>
+          </el-page-header>
         </el-header>
-        <el-main>Main</el-main>
+        <el-main> <router-view></router-view> </el-main>
       </el-container>
     </el-container>
   </div>
@@ -52,6 +63,7 @@ export default {
   data() {
     return {
       activeIndex: "1", // 当前选中的菜单
+      isCollapse: false, // 是否折叠
     };
   },
   // 保存当前选中的菜单
@@ -63,13 +75,16 @@ export default {
       this.activeIndex = index;
       localStorage.setItem("activeIndex", index);
     },
+    handleCollapse() {
+      this.isCollapse = !this.isCollapse;
+    },
   },
 };
 </script>
 
 <style>
 .el-menu-vertical-demo {
-  height: calc(100vh);
+  height: calc(100vh - 60px);
   overflow: auto;
 }
 * {
@@ -87,9 +102,9 @@ export default {
   color: #ffffff;
 }
 .el-header {
+  /* 上下居中 */
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>
