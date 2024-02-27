@@ -53,7 +53,7 @@
             </template>
           </el-page-header>
         </el-header>
-        <el-main>
+        <el-main style="background-color: #f5f3f7">
           <router-view></router-view>
         </el-main>
       </el-container>
