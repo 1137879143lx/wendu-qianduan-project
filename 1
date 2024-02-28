@@ -1,0 +1,45 @@
+<template>
+  <el-table :data="tableData">
+    <!-- 其他列 -->
+    <el-table-column label="图表">
+      <template v-slot:default="scope">
+        <div :ref="`chart${scope.$index}`" style="width: 200px; height: 200px"></div>
+      </template>
+    </el-table-column>
+  </el-table>
+</template>
+
+<script>
+  import * as echarts from 'echarts';
+
+  export default {
+    data() {
+      return {
+        tableData: [], // 你的表格数据
+        charts: [],
+      };
+    },
+    methods: {
+      initChart(index) {
+        const chart = echarts.init(this.$refs[`chart${index}`]);
+        chart.setOption({
+          // 你的图表选项
+        });
+        this.charts.push(chart);
+      },
+    },
+    mounted() {
+      this.$nextTick(() => {
+        for (let i = 0; i < this.tableData.length; i++) {
+          this.initChart(i);
+        }
+      });
+    },
+    beforeDestroy() {
+      // 销毁图表
+      this.charts.forEach((chart) => {
+        chart.dispose();
+      });
+    },
+  };
+</script>
