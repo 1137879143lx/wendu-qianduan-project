@@ -145,9 +145,14 @@
       </template>
     </el-dialog>
     <!-- 数据导出-->
-    <el-dialog title="导出" v-model="shujudaochu_show" width="60%">
+    <el-dialog title="导出" v-model="shujudaochu_show" width="40%">
+      <template v-slot:title>
+        <span>导出</span>
+        <el-date-picker style="margin-left: 33px;" v-model="Time_range" type="daterange" unlink-panels range-separator="至"
+          start-placeholder="开始日期" end-placeholder="结束日期" :shortcuts="shortcuts" />
+      </template>
       <!-- 表格 -->
-      <el-table :data="tableData">
+      <el-table :data="tableData" style=" width: 100%;" :fit="false">
         <el-table-column type="index" label="#" />
         <el-table-column prop="name" label="名称" />
         <el-table-column prop="mac" label="MAC" width="200" />
@@ -199,6 +204,36 @@ export default {
       tableData: [{}],
       dialogTableVisible: false,
       shujudaochu_show: false,
+      Time_range: "",
+      shortcuts: [
+        {
+          text: '最近一周',
+          value: () => {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+            return [start, end]
+          },
+        },
+        {
+          text: '最近一个月',
+          value: () => {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+            return [start, end]
+          },
+        },
+        {
+          text: '最近三个月',
+          value: () => {
+            const end = new Date()
+            const start = new Date()
+            start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
+            return [start, end]
+          },
+        },
+      ],
       Humidity_marks: {
         0: "0%",
         20: "20%",
