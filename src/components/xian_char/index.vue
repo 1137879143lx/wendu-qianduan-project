@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div ref="charts" style="width: 400px; height: 200px"></div>
+    <div ref="charts" style="height: 200px"></div>
   </div>
 </template>
-
+ 
 <script>
 import * as echarts from "echarts";
 export default {
@@ -26,9 +26,6 @@ export default {
         // title: {
         //   text: "温度",
         // },
-        tooltip: {
-          trigger: "axis",
-        },
         xAxis: {
           type: "time",
           splitLine: {
@@ -39,11 +36,17 @@ export default {
           type: "value",
         },
         legend: {
-          data: ["temperature", "humidity"],
+          data: ["温度", "湿度"],
+        },
+        tooltip: {
+          trigger: 'axis',
+
+
+
         },
         series: [
           {
-            name: "temperature",
+            name: "温度",
             data: this.temperatureData,
             type: "line",
             showSymbol: false,
@@ -56,7 +59,7 @@ export default {
             // areaStyle: {},
           },
           {
-            name: "humidity",
+            name: "湿度",
             data: this.humidityData,
             type: "line",
             showSymbol: false,

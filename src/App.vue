@@ -26,7 +26,7 @@
           style="background-color: #0c2135"
           active-text-color="#ffd04b"
         >
-          <el-menu-item index="1" route="/">
+          <el-menu-item index="1" @click="$router.push('/')">
             <el-icon><House /></el-icon>
             首页
           </el-menu-item>
